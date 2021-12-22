@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt');
+@import url('//db.onlinewebfonts.com/c/bb25f84423b9515a1d475d02d2de6462?family=Bell+MT');
+.font{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+}
+
+a:link{
+    text-decoration: none;
+    color: #002060;
+}
+
+a:hover {
+    color: red; ;
+  }
+
+a.button1_1:link{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a.button1_1:hover {
+    color: rgb(255, 255, 255); ;
+  }
+
+a.button2:link{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a.button2:hover {
+    color: rgb(255, 255, 255); ;
+  }
+
+.font1{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bell MT Semi Bold";
+    font-size:50px;
+    font-style: italic;
+}
+
+.font2{
+    font-weight: 100;
+    font-size:15px;
+    font-family: "Prompt"
+}
+
+.header {
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 125px; 
+}
+
+.s1{
+    margin-top: 0px;
+    margin-left: 20px;
+    color: #002060;
+    display:inline-block
+}
+.s1_1{
+  margin-top: 0px;
+  margin-left: 20px;
+  color: #002060;
+  display:inline-block
+}
+
+
+.s2 {
+    margin-left: 40px;
+    color: #002060;
+    display:inline-block;
+}
+
+body, html {
+  background :#D6DCE5
+}
+
+.bg {
+    background-color: #D6DCE5;
+    height: 100%;
+}
+
+.button{
+    border: none;
+    padding: 0px 20px;
+    cursor: pointer;
+    margin: 8px 0;
+    border-radius: 8px; 
+}
+
+.box1{
+  height: 125px;
+  margin: -120px 0px 0px 910px;
+  text-align: center;
+  width: 400px;
+}
+
+.box1_1{
+  height: 125px;
+  width: 150px;
+  margin: -100px 1334px;
+}
+
+.button1 {
+    background-color: #ffffff;
+    color: #002060;
+}
+
+.button1_1 {
+  background-color: #940014;
+  color: white;
+}
+
+.button1_1:hover {
+  opacity: 0.8;
+}
+
+.button2 {
+    font-size: 20px;
+    background-color: #002060;
+    color: white;
+    height: 40px;
+    width: 80%;
+    margin: 20px;
+}
+
+.button2:hover {
+    opacity: 0.8;
+}
+
+hr { 
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 2px;
+    border-color: #D6DCE5
+  } 
+
+.s3 {
+    margin: -5px 50px;
+    color: #002060;
+    display:inline-block;
+}
+
+.box2{
+    background-color: #ffffff;
+    position: relative;
+    top: 150px;
+    width: 40%;
+    height: auto;
+    margin: auto;
+  }
+
+  input[type=text]{
+    width: 45%;
+    padding: 12px 20px;
+    margin: 15px 0px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }

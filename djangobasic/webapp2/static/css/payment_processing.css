@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt');
+@import url('//db.onlinewebfonts.com/c/bb25f84423b9515a1d475d02d2de6462?family=Bell+MT');
+.font{
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+}
+
+a:link{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+  }
+
+.font1{
+    font-weight: 100;
+    font-size:15px;
+    font-family: "Prompt"
+}
+
+.header {
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 125px; 
+}
+
+
+body, html {
+  background :#D6DCE5
+}
+
+.bg {
+    background-color: #D6DCE5;
+    height: 100%;
+}
+
+.button{
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: #002060;
+    color: #ffffff;
+}
+
+.s1 {
+    color: #002060;
+    margin: -7px;
+    display:inline-block;
+}
+
+.box {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    height: 570px;
+    margin: 80px 125px;
+}

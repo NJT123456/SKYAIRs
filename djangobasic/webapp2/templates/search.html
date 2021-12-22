@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'js/script.js' %}">
+    <link rel="stylesheet" href="{% static 'css/daterangepicker.css' %}">
+    <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <title>SKYAIRs</title>
+</head>
+<body>
+    
+    <div class="bg">
+        
+    <!--One-way-->
+        <div class="header">
+            <div class="s1"><h1 class="font1">SKYAIRs</h1></div>
+            <div class="s2 font"><h3><a href="/flight/searching">เที่ยวบิน</a></h3></div>
+        <div class="s2 font"><h3><a href="/flight/orders">คำสั่งซื้อ</a></h3></div>
+        {% if request.user.is_staff %}
+        <div class="s2 font"><h3><a href="/admin/">Admin Page</a></h3></div>
+        {% endif %}
+        <div class="box1"><div class="s2 font" style="margin: 20px;"><h2>Hello {{ user.username }}</h2></div></div>
+        <div class="box1_1"><button class ="button button1_1 font" onclick="document.getElementById('id02').style.display='block'" style="width:150px;" action="logout" method="POST"><h3><a href="/" class="button1_1">Logout</a></h3></button></div>
+    </div>
+
+        <div class="flight-go-header container-go">
+            <p class="font medium-g center">เลือกเที่ยวบินขาไป</p>
+        </div>
+
+        <div class="flight-back-header container-back">
+            <p class="font medium-b m-b-5 center">เลือกเที่ยวบินขากลับ</p>
+            <a href="new-flight-search"><input type="submit" class="button2 font" name="change_search" value="เปลี่ยนการค้นหา"></a>
+        </div>
+
+        <div class="font">
+            <div class="text-company">
+                <div class="textair"><h2>สายการบิน</h2></div>
+            </div>
+            <div class="text-flight-origin-time">
+                <div class="texttimestart"><h2>เวลาออกเดินทาง</h2></div>
+            </div>
+            <div class="text-sym">
+                <div class="textsym"><h2>></h2></div>
+            </div>
+            <div class="text-destination-time">
+                <div class="texttimeend"><h2>เวลาถึงปลายทาง</h2></div>  
+            </div>
+            <div class="text-pri">
+                <div class="textpri font"><h2>ราคาต่อคน</h2></div>     
+            </div>
+        </div>
+        {% if ticket.all or ticket1.all %}
+            <!-- One-way -->
+            {% if trip_type == "1" %}
+                {% for ticket in ticket %}
+                    <div class="each-flight-div-box show font3 font">
+                        <div class="each-flight-div">
+                            <div class="flight-company">
+                                <div class="company-details">
+                                    <div class="company-name">{{ticket.airline}}</div>
+                                </div>
+                            </div>
+
+                            <div class="flight-time-div">
+                                <div class="flight-origin-time">
+                                    <div class="flight-time">
+                                        {{ticket.depart_time|time:"H:i"}}
+                                    </div>
+                                    <div class="flight-place">
+                                        {{ticket.origin.city}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sym"> > </div>
+
+                            <div class="flight-destination-time">
+                                <div class="flight-time2">
+                                    {{ticket.arrival_time|time:"H:i"}}
+                                </div>
+                                <div class="flight-place1">
+                                    {{ticket.destination.city}}
+                                </div>
+                            </div>
+
+                            <div class="flight-details">
+                                <div class="flight-price">
+                                    {{ticket.fare}} บาทต่อคน
+                                </div>
+                            </div>
+                            <form action="{% url 'review' %}" method="POST"> {% csrf_token %}
+                                <div>
+                                    <input type="hidden" name="origin_book" value="{{ticket.origin.code}}">
+                                    <input type="hidden" name="destination_book" value="{{ticket.origin.city}}">
+                                    <input type="hidden" name="flightnumber_book" value="{{ticket.fnumber}}">
+                                    <input type="submit" class="button3 font" name="book" value="เลือกเที่ยวบิน">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            <!--Round-trip-->
+            {% elif trip_type == "2" %}
+                {% for ticket1 in ticket1 %}
+                    <div class="each-flight-div-box show font3 font">
+                        <div class="each-flight-div">
+                            <div class="flight-company">
+                                <div class="company-details">
+                                    <div class="company-name">{{ticket1.airline}}</div>
+                                </div>
+                            </div>
+
+                            <div class="flight-time-div">
+                                <div class="flight-origin-time">
+                                    <div class="flight-time">
+                                        {{ticket1.depart_time|time:"H:i"}}
+                                    </div>
+                                    <div class="flight-place">
+                                        {{ticket1.origin.city}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sym"> > </div>
+
+                            <div class="flight-destination-time">
+                                <div class="flight-time2">
+                                    {{ticket1.arrival_time|time:"H:i"}}
+                                </div>
+                                <div class="flight-place1">
+                                    {{ticket1.destination.city}}
+                                </div>
+                            </div>
+
+                            <div class="flight-details">
+                                <div class="flight-price">
+                                    {{ticket1.fare}} บาทต่อคน
+                                </div>
+                            </div>
+                            <form action="{% url 'review' %}" method="POST"> {% csrf_token %}
+                                <div>
+                                    <input type="hidden" name="origin_book1" value="{{ticket1.origin.city}}">
+                                    <input type="hidden" name="destination_book1" value="{{ticket1.destination.city}}">
+                                    <input type="hidden" name="flightnumber_book1" value="{{ticket1.fnumber}}">
+                                    
+                                    <!--save value to search_return.html-->
+                                    <input type="hidden" name="origin_book2" value="{{origin2}}">
+                                    <input type="hidden" name="destination_book2" value="{{destination2}}">
+                                    <input type="hidden" name="return_date_book2" value="{{return_date}}">
+                                    <input type="hidden" name="seat_class_book2" value="{{ticket1.seat_class}}"> 
+                                    <!--submit--> 
+                                    <input type="submit" class="button3 font" name="book1" value="เลือกเที่ยวบิน">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <h3>No ticket you search.</h3>
+        {% endif %}
+        
+    </div>
+    
+</body>
+</html>

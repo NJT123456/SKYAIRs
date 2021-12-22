@@ -1,0 +1,49 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">  
+    <link rel="stylesheet" href="{% static 'img/air5.png' %}">    
+    <title>SKYAIRs</title>
+</head>
+<body>
+    <div class="bg" style="background-image: url('{% static 'img/air5.png' %}')"></div>
+    <div class="header">
+        <div class="s1"><h1 class="font1">SKYAIRs</h1></div>
+        <div class="box1">
+        <button class ="button button1 font" .style.display='block' style="width:150px;"><h3>Login</h3></button>
+        </div>
+    <form class="modal-content animate" action="register" method="POST">{% csrf_token %}
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" ><a href="/">&times;</a></span>
+            <h2 class="font">Register</h2>
+          </div>
+
+        <div class="container">
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <span style= "color: red;"><small>{{message1}}</small></span>
+
+        <input type="password" placeholder="Enter Password" name="password1" required>
+
+        <input type="password" placeholder="Confirm Password" name="password2" required>
+        <span style= "color: red;"><small>{{message2}}</small></span>
+        <div class="clearfix">
+            <button class ="button button2 font" type= "submit">Register<a href="homepage"></a></button>
+            <span class="register"><a href="/">มีบัญชีอยู่แล้ว</a></span> 
+        </div>
+        </div>
+    </form>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

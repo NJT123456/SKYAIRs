@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/review.css' %}"> 
+    <title>SKYAIRs</title>
+</head>
+<body>
+    <div class="header">
+        <div class="s1"><h1 class="font1">SKYAIRs</h1></div>
+        <div class="s2 font"><h3><a href="/flight/searching">เที่ยวบิน</a></h3></div>
+        <div class="s2 font"><h3><a href="/flight/orders">คำสั่งซื้อ</a></h3></div>
+        {% if request.user.is_staff %}
+        <div class="s2 font"><h3><a href="/admin/">Admin Page</a></h3></div>
+        {% endif %}
+        <div class="box1"><div class="s2 font" style="margin: 20px;"><h2>Hello {{ user.username }}</h2></div></div>
+        <div class="box1_1"><button class ="button button1_1 font" onclick="document.getElementById('id02').style.display='block'" style="width:150px;" action="logout" method="POST"><h3><a href="/" class="button1_1">Logout</a></h3></button></div>
+    </div>
+    <form action="{% url 'payment' %}" method="POST">{% csrf_token %}
+    <!--One way-->
+    {% if trip_type == "1" %}
+    <div class="box2">
+        <div class="s3 font"><h3>เที่ยวบินขาไป</h3></div><hr>
+            <div class="s4 font"><h2>{{ticket_review.origin.city_thai}} > {{ticket_review.destination.city_thai}}</h2></div><br>
+            <div class="s4 font"><h3>{{ticket_review.fnumber}} | {{ticket_review.seat_class|capfirst}} | {{ticket_review.depart_date}}</h3></div><hr>
+            <div class="b1">
+                <center><div class="s5 font"><h2>{{ticket_review.airline}}</h2></div></center>
+                <div class="timeline">
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket_review.depart_time|time:"H:i"}} {{ticket_review.origin.airport_thai}}</h3></div>
+                    </div>
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket_review.arrival_time|time:"H:i"}} {{ticket_review.destination.airport_thai}}</h3></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    <div class="box3">
+        <div class="s3 font"><h3>รายละเอียดราคา</h3></div><hr>
+        <div class="s3 font"><h3>เที่ยวบินขาไป</h3></div><br>
+            <div class="s3 font"><h2>{{ticket_review.origin.city}} --> {{ticket_review.destination.city}}</h2></div>
+            <div class="s3 font"><h3>฿ {{ticket_review.fare}}</h3></div>
+            <input type="hidden" name="onewayTicket" value="{{ticket_review.fid}}">
+            <input type="hidden" name="trip_type" value="1">
+            <input type="hidden" name="total_fareOneway" value="{{ticket_review.fare}}">
+            <input type="submit" class ="button button3 font" value="ยืนยันการจอง">
+    </div>
+    <div class="box4_1">
+        <div class="s3 font"><h3>ข้อมูลการติดต่อ |</h3></div>
+        <div class="s3 font"><h3><a href="{% url 'add_passenger' %}" target="_blank">Add passenger</a></h3></div><hr>
+        <input type="hidden" name='user' value="{{user.username}}">
+        <label class="s6 font"><h3>Email : </h3>
+            <input type="text" placeholder="Email" name="email_contact" required style="width: 150%;">
+        </label>
+        <label class="s6 font"><h3>Mobile : </h3>
+        <input type="text" placeholder="Mobile" name="phone_contact" required style="width: 150%;">
+    </label>
+    </div>
+    
+    <!--Round trip-->
+    {% elif trip_type == "2" %}
+    <div class="box2">
+        <div class="s3 font"><h3>เที่ยวบินขาไป</h3></div><hr>
+            <div class="s4 font"><h2>{{ticket1.origin.city_thai}} > {{ticket1.destination.city_thai}}</h2></div><br>
+            <div class="s4 font"><h3>{{ticket1.fnumber}} | {{ticket1.seat_class|capfirst}} | {{ticket1.depart_date}}</h3></div><hr>
+            <div class="b1">
+                <center><div class="s5 font"><h2>{{ticket1.airline}}</h2></div></center>
+                <div class="timeline">
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket1.depart_time|time:"H:i"}} {{ticket1.origin.airport_thai}}</h3></div>
+                    </div>
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket1.arrival_time|time:"H:i"}} {{ticket1.destination.airport_thai}}</h3></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="box4">
+        <div class="s3 font"><h3>เที่ยวบินขากลับ</h3></div><hr>
+            <div class="s4 font"><h2>{{ticket2.origin.city_thai}} > {{ticket2.destination.city_thai}}</h2></div><br>
+            <div class="s4 font"><h3>{{ticket2.fnumber}} | {{ticket2.seat_class|capfirst}} | {{ticket2.depart_date}}</h3></div><hr>
+            <div class="b1">
+                <center><div class="s5 font"><h2>{{ticket2.airline}}</h2></div></center>
+                <div class="timeline">
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket2.depart_time|time:"H:i"}} {{ticket2.origin.airport_thai}}</h3></div>
+                    </div>
+                    <div class="container right">
+                        <div class="s4 font"><h3>{{ticket2.arrival_time|time:"H:i"}} {{ticket2.destination.airport_thai}}</h3></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="box5">
+        <div class="s3 font"><h3>รายละเอียดราคา</h3></div><hr>
+        <div class="s3 font"><h3>เที่ยวบินขาไป</h3></div><br>
+        <div class="s3 font"><h2>{{ticket1.origin.city}} --> {{ticket1.destination.city}}</h2></div>
+        <div class="s3 font"><h3>฿ {{ticket1.fare}}</h3></div><hr>
+        <div class="s3 font"><h3>เที่ยวบินขากลับ</h3></div><br>
+        <div class="s3 font"><h2>{{ticket2.origin.city}} --> {{ticket2.destination.city}}</h2></div>
+        <div class="s3 font"><h3>฿ {{ticket2.fare}}</h3></div>
+        <input type="hidden" name="trip_type" value="2">
+        <input type="hidden" name="total_fareRoundtrip" value="{{total_fare}}">
+        <input type="hidden" name="GoTicket" value="{{ticket1.fid}}">
+        <input type="hidden" name="ReturnTicket" value="{{ticket2.fid}}">
+        <input type="submit" class ="button button3 font" value="ยืนยันการจอง">
+    </div>
+
+    <div class="box4_2">
+        <div class="s3 font"><h3>ข้อมูลการติดต่อ |</h3></div>
+        <div class="s3 font"><h3><a href="{% url 'add_passenger' %}" target="_blank">Add passenger</a></h3></div><hr>
+        <input type="hidden" name='user' value="{{user.username}}">
+        <label class="s6 font"><h3>Email : </h3>
+            <input type="text" placeholder="Email" name="email_contact" required style="width: 150%;">
+        </label>
+        <label class="s6 font"><h3>Mobile : </h3>
+        <input type="text" placeholder="Mobile" name="phone_contact" required style="width: 150%;">
+    </label>
+    </div>
+    {% endif %}
+
+</form>
+</body>
+</html>
+

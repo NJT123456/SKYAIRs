@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/payment.css"> 
+    <title>SKYAIRs</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="s1"><h1 class="font1">SKYAIRs</h1></div>
+        <div class="s2 font"><h3><a href="/flight/searching">เที่ยวบิน</a></h3></div>
+        <div class="s2 font"><h3><a href="/flight/orders">คำสั่งซื้อ</a></h3></div>
+        {% if request.user.is_staff %}
+        <div class="s2 font"><h3><a href="/admin/">Admin Page</a></h3></div>
+        {% endif %}
+        <div class="box1"><div class="s2 font" style="margin: 20px;"><h2>Hello {{ user.username }}</h2></div></div>
+        <div class="box1_1"><button class ="button button1_1 font" onclick="document.getElementById('id02').style.display='block'" style="width:150px;" action="logout" method="POST"><h3><a href="/" class="button1_1">Logout</a></h3></button></div>
+    </div>
+
+    <form action="{% url 'get_confirm' %}" method="POST"> {% csrf_token %}
+    <div class="box2">
+        {% if trip_type == "1" %}
+        <div class="s1_1 font"><h3>ราคารวมทั้งหมด : ฿ {{schedule.total_fare}}</h3></div><hr>
+        {% elif trip_type == "2" %}
+        <div class="s1_1 font"><h3>ราคารวมทั้งหมด : ฿ {{total_buy}}</h3></div><hr>
+        {% endif %}
+        <center>
+                <div class="s3 font"><h3>Payment Method: Credit Card/Debit Card</h3></div><hr></center>
+                <div class="s3 font"><h3>Name : </h3></div>
+                <input type="text" placeholder="Name" name="card_name" required style="margin-left: 95px;"><br>
+                <div class="s3 font"><h3>Card Number : </h3></div>
+                <input type="text" placeholder="Card Number" name="card_number" required style="margin-left: 25px;"><br>
+                <div class="s3 font"><h3>Expiration(mm/yy) : </h3></div>
+                <input type="text" placeholder="MM/YY" name="expire" required style="margin-left: -18px;"><br>
+                <div class="s3 font"><h3>Security Code : </h3></div>
+                <input type="text" placeholder="CVV" name="secureCode" required style="margin-left: 20px;"><br>
+                {% if trip_type == "1" %}
+                <input type="hidden" name="ref_no" value="{{schedule.ref_no}}">
+                {% elif trip_type == "2" %}
+                    <input type="hidden" name="ref_no1" value="{{despart_book.ref_no}}">
+                    <input type="hidden" name="ref_no2" value="{{return_book.ref_no}}">
+                {% endif %}
+                <input type="hidden" name="trip_type" value="{{trip_type}}">
+            <center><input type="submit" class ="button button2 font" name="status" value="Confirm"></center>
+    </div>
+    </form>
+</body>
+</html>

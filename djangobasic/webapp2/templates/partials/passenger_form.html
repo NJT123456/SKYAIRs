@@ -1,0 +1,14 @@
+<div hx-target="this" hx-swap="outerHTML">
+    <form method="POST">
+        {{trip_type}}
+        {% csrf_token %}
+        {{ form.management_form }}
+        {{ form.as_p }}
+        {% if passenger %}
+        <button hx-post="{% url 'update-passenger' passenger.id  %}">Submit1</button>
+        {% else %}
+        <button hx-post=".">Submit</button>  
+        {% endif %}
+    </form>
+</div>
+

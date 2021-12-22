@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/payment_processing.css"> 
+    <title>SKYAIRs</title>
+</head>
+
+<body>
+    <div class="box">
+        <center><img src="{% static 'img/comp.png' %}" style width ="400px" height="300px" margin-top= "20px;"></center>
+        <center><div class="s1 font1"><h1>Congratulations, Your flight are booking confirmed.</h2></div></center>
+        {% if trip_type == "1" %}
+            <center><div class="s1 font1"><h3>Booking Ref: {{schedule.ref_no}} , ({{schedule.flight.origin.code}} -> {{schedule.flight.destination.code}})</h3></div></center><br>
+        {% elif trip_type == "2" %}
+            <center><div class="s1 font1"><h3>Booking Ref: {{schedule1.ref_no}} , ({{schedule1.flight.origin.code}} -> {{schedule1.flight.destination.code}})</h3></div></center>
+            <center><div class="s1 font1"><h3>Booking Ref: {{schedule2.ref_no}} , ({{schedule2.flight.origin.code}} -> {{schedule2.flight.destination.code}})</h3></div></center>
+        {% endif %}
+        <br><center><a href="{% url 'order' %}" class= "button font">กลับไปหน้าคำสั่งซื้อทั้งหมด</a></center>
+    </div>
+</body>
+</html>

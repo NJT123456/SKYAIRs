@@ -1,0 +1,14 @@
+{% extends "base2.html" %}
+{% block content %}
+<h1>Passenger of {{ user.username }}</h1>
+    <button hx-get="{% url 'passenger-form' %}" hx-swap="beforeend" hx-target="#passengerforms">
+        Add Passenger
+    </button>
+    <button onclick="self.close()">DONE</button>
+    <div id="passengerforms"></div>
+    {% for passenger in passengers %}
+        {% include 'partials/passenger_detail.html' %}
+    {% endfor %}
+
+    
+{% endblock %}

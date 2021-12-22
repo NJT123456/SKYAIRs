@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt');
+@import url('//db.onlinewebfonts.com/c/bb25f84423b9515a1d475d02d2de6462?family=Bell+MT');
+.font{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+}
+
+a:link{
+    text-decoration: none;
+    color: #002060;
+}
+
+a:hover {
+    color: red; 
+  }
+
+a.button1_1:link{
+    text-decoration: none;
+    color: #ffffff
+}
+
+a.button1_1:hover{
+    color: white;
+}
+
+.font1{
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bell MT Semi Bold";
+    font-size:50px;
+    font-style: italic;
+}
+
+.font2{
+    font-weight: 100;
+    font-size:15px;
+    font-family: "Prompt"
+}
+
+.header {
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 125px; 
+}
+
+.s1{
+    margin-top: 0px;
+    margin-left: 20px;
+    color: #002060;
+    display:inline-block
+}
+
+.s2 {
+    margin-left: 40px;
+    color: #002060;
+    display:inline-block;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+.bg {
+    /* The image used */
+    background-color: #D6DCE5;
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center buttom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.button{
+    border: none;
+    padding: 0px 20px;
+    cursor: pointer;
+    margin: 8px 0;
+    border-radius: 8px; 
+}
+
+.box1{
+    height: 125px;
+    margin: -120px 0px 0px 910px;
+    text-align: center;
+    width: 400px;
+  }
+  
+  .box1_1{
+    height: 125px;
+    width: 150px;
+    margin: -100px 1334px;
+  }
+.button1 {
+    background-color: white;
+    color: #002060;
+}
+
+.button1_1 {
+  background-color: #940014;
+  color: white;
+}
+
+.button1_1:hover {
+  opacity: 0.8;
+}
+
+.flight-go-header{
+    background-color: #F2F2F2;
+    position: absolute;
+    height: 100px; 
+    width: 50%;
+    left: 0;
+    top: 100px;
+}
+
+.flight-back-header{
+    background-color:#002060;
+    position: absolute;
+    height: 100px; 
+    width: 50%;
+    left:50%;
+    top: -25px;
+}
+
+.container-go{
+    flex-grow: unset;
+    margin-left: 0 auto;
+    position: relative;
+}
+
+.container-back{
+    flex-grow: unset;
+    position: relative;
+}
+
+.medium-g{
+    font-size: 25px;
+    line-height: 100px;
+    font-weight: 700;
+    color: #BFBFBF;
+}
+
+p.center{
+    text-align: center; 
+}
+
+.medium-b{
+    font-size: 25px;
+    line-height: 100px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.button2{
+    border-style: solid;
+    border-color: white;
+    background-color: #002060;
+    float: right;
+    padding: 5px 20px;
+    cursor: pointer;
+    margin: -92px 5px;
+    text-align: center;
+    font-size: 16px;
+    width: 152px;
+    border-radius: 8px;
+    color: white; 
+}
+
+.button4{
+    border-style: solid;
+    border-color: #002060;
+    float: right;
+    padding: 5px 20px;
+    cursor: pointer;
+    margin: -92px 5px;
+    text-align: center;
+    font-size: 16px;
+    width: 152px;
+    border-radius: 8px; 
+    color: #002060;
+}
+
+.text-company{
+    width: 12%;
+    margin-left: 27px;
+}
+
+.text-flight-origin-time{
+    width: 40%;
+    margin-left: 199px;
+}
+
+.text-sym{
+    width: 40%;
+    margin-left: -40px;
+}
+
+.text-destination-time{
+    float: right;
+    width: 40%;
+    margin-right: 698px;
+}
+
+.text-pri{
+    float: right;
+    width: 40%;
+    margin-right: 449px;
+}
+
+.textair{
+    text-align: center;
+    margin-top: -18px;
+    color: #002060;
+}
+
+.texttimestart{
+    margin-top: -57px;
+    text-align: center;
+    color: #002060;
+}
+
+.texttimeend{
+    float: right;
+    margin-top: -79px;
+    text-align: center;
+    color: #002060;
+}
+
+.textpri{
+    float: right;
+    margin-top: -79px;
+    text-align: center;
+    color: #002060;
+}
+
+.textsym{
+    float: right;
+    margin-top: -75px;
+    text-align: center;
+    color: #002060;
+}
+
+.show{
+    display: block;
+}
+
+.each-flight-div{
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.each-flight-div-box{
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.flight-company{
+    width: 25%;
+}
+
+.company-details{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.company-name{
+    margin-left: 51px;
+}
+
+.font3{
+    font-weight: bold;
+    color: #002060;
+    font-size: 22px;
+}
+
+.flight-time-div{
+    max-width: 44%;
+}
+
+.flight-origin-time, .flight-destination-time, .flight-origin-time2, .flight-destination-time2{
+    width: 40%;
+}
+
+.flight-time{
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    margin-left: 354px;
+    margin-top: -34px;
+}
+
+.flight-place{
+    font-weight: bold;
+    font-size: 18px;
+    color: #002060;
+    margin-left: 335px;
+    margin-top: -7px;
+}
+
+.sym{
+    margin-top: -50px;
+    margin-left: 524px;
+}
+
+.flight-time2{
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    margin-left: 713px;
+    margin-top: -36px;
+}
+
+.flight-place1{
+    font-weight: bold;
+    font-size: 18px;
+    color: #002060;
+    text-align: center;
+    margin-left: 680px;
+    margin-top: -8px;
+}
+
+.flight-details{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.flight-price{
+    margin-left: 901px;
+    margin-top: -43px;
+}
+
+.button3{
+    border: none;
+    float: right;
+    padding: 5px 20px;
+    margin-top: -43px;
+    margin-left: 1024px;
+    cursor: pointer;
+    font-size: 22px;
+    width: 175px;
+    border-radius: 8px; 
+    background-color: #002060;
+    color: white;
+}
